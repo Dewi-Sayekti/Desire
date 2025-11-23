@@ -367,15 +367,13 @@ const STATIC_FANS_DATA = [
         id: 'fans-dewi', 
         title: "FansGirl", 
         // Kunci data diubah ke format standar JavaScript (camelCase/snake_case)
-        name: "Dewi Sayekti Sutrisni",
-        semester: "5 (Lima)",
-        major: "Informatika",
-        photoUrl: "assets/Dewi.jpg", // Pastikan file ini ada
+        name: ": Dewi Sayekti Sutrisni",
+        semester: ": 5 (Lima)",
+        major: ": Informatika",
     }
 ];
 
 function renderFans() {
-    // Hanya ambil data pertama jika hanya ingin menampilkan satu profil statis
     const p = STATIC_FANS_DATA[0]; 
     
     if (!fansList || !p) {
@@ -406,22 +404,14 @@ function renderFans() {
         }
         return '';
     }).join('');
-
+    
     // Render ke fansList (Kontainer Fans)
-    fansList.innerHTML = `
+   fansList.innerHTML = `
         <div class="col-12">
             <div class="card p-4" style="background: transparent !important; border: 1px solid var(--accent);">
                 <div class="row">
-                    <div class="col-md-3 text-center mb-3 mb-md-0">
-                        <img 
-                            src="${p.photoUrl}" 
-                            alt="${p.name}" 
-                            class="img-fluid rounded-circle" 
-                            style="width:200px; height:200px; object-fit:cover; border: 3px solid var(--accent);"
-                        />
-                    </div>
                     
-                    <div class="col-md-9">
+                    <div class="col-12">
                         <h3 style="color:var(--accent);">${escapeHtml(p.title)}</h3>
                         <p class="muted mb-3">Biografi Penggemar</p>
 
@@ -478,3 +468,4 @@ renderProfileCard();
 renderFotos();
 renderVideo();
 renderFans(); // Memanggil fungsi fans yang sudah diperbaiki
+
