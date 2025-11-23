@@ -342,10 +342,10 @@ const STATIC_FANS_DATA = [
     {
         id: 'fans-dewi', 
         title: "FansGirl", 
-        // Kunci data diubah ke format standar JavaScript (camelCase/snake_case)
         name: ": Dewi Sayekti Sutrisni",
         semester: ": 5 (Lima)",
         major: ": Informatika",
+        photoUrl: "assest/Dewi.jpg",
     }
 ];
 
@@ -365,8 +365,7 @@ function renderFans() {
         { key: 'semester', label: 'Semester' },
         { key: 'major', label: 'Jurusan' },
     ];
-// Logika render table rows yang diperbaiki
-    const tableRows = detailKeys.map(d => {
+const tableRows = detailKeys.map(d => {
         const value = escapeHtml(p[d.key] || 'N/A');
         
         if (value) {
@@ -379,14 +378,21 @@ function renderFans() {
         }
         return '';
     }).join('');
-
-    // Render ke fansList (Kontainer Fans)
-   fansList.innerHTML = `
+        
+        // Render ke fansList
+    fansList.innerHTML = `
         <div class="col-12">
             <div class="card p-4" style="background: transparent !important; border: 1px solid var(--accent);">
                 <div class="row">
-                    
-                    <div class="col-12">
+                    <div class="col-md-3 text-center mb-3 mb-md-0">
+                        <img 
+                            src="${p.photoUrl}" 
+                            alt="${p.name}" 
+                            class="img-fluid rounded-circle" 
+                            style="width:200px; height:200px; object-fit:cover; border: 3px solid var(--accent);"
+                        />
+                    </div>
+                    <div class="col-md-9">
                         <h3 style="color:var(--accent);">${escapeHtml(p.title)}</h3>
                         <p class="muted mb-3">Biografi Penggemar</p>
 
@@ -428,7 +434,6 @@ if (load(keys.video).length === 0) {
         { 
             id: uid(), 
             title: 'XingQiu', 
-            // URL MENGGUNAKAN PATH RELATIF KE FOLDER ASSET
             url: 'assets/xingqiu_demo_trailer.mp4', 
             type: 'video/mp4', // Pastikan jenis mime sesuai
             created: Date.now() 
