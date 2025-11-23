@@ -86,7 +86,7 @@ const STATIC_PROFILES_DATA = [
         Weibo: ': <a href="https://weibo.com/u/7464197479" target="_blank" class="text-info">@邱鼎杰_kipuka</a>',
         Instagram: ': <a href="https://www.instagram.com/kipuka_qiu" target="_blank" class="text-info">@kipuka_qiu</a>',
         bio: " Meski lahir di Shanghai, ia memiliki akar keluarga dari Provinsi Fujian. Kiprah seninya dimulai sejak ia menempuh pendidikan di Shanghai Film Academy. Ia lulus dari Departemen Seni Peran dan berada di bawah naungan agensi Shanghai Yile Culture. Sejak itu, ia aktif membangun reputasi sebagai aktor dengan karakteristik khas. Qiu dikenal memiliki nama panggilan Kipuka di kalangan penggemarnya. Kepribadiannya yang kalem di luar layar membuatnya digemari banyak penggemar drama Tiongkok.",
-        photoUrl: "assets/Kipuka.jpg", // Pastikan file ini ada
+        photoUrl: "assest/Kipuka.jpg", // Pastikan file ini ada
         city: "Tiongkok",
     }
 ];
@@ -420,7 +420,7 @@ if (load(keys.photos).length === 0) {
             id: uid(), 
             name: 'Foto XingQiu', 
             // URL MENGGUNAKAN PATH RELATIF KE FOLDER ASSET
-            url: 'assets/xingqiu_demo.jpg', 
+            url: 'assest/xingqiu_demo.jpg', 
             type: 'image/jpeg', 
             created: Date.now() 
         },
@@ -434,7 +434,7 @@ if (load(keys.video).length === 0) {
         { 
             id: uid(), 
             title: 'XingQiu', 
-            url: 'assets/xingqiu_demo_trailer.mp4', 
+            url: 'assest/xingqiu_demo_trailer.mp4', 
             type: 'video/mp4', // Pastikan jenis mime sesuai
             created: Date.now() 
         },
@@ -446,3 +446,4 @@ renderProfileCard(); // Panggilan untuk Profil Statis Baru
 renderFotos();
 renderVideo();
 renderFans();
+
