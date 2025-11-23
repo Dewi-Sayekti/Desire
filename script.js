@@ -358,7 +358,7 @@ function openMediaInModal(item) {
 // 5. FANS (BIOGRAFI PENGGEMAR)
 // ======================================================================
 const Fans = document.getElementById('Fans');
-const STATIC_PROFILES_DATA = [
+const PROFILES_DATA = [
     {
         id: 'fans-main', 
         title: "FansGirl", 
@@ -370,11 +370,11 @@ const STATIC_PROFILES_DATA = [
 ];
 
 function renderFans() {
-    const p = STATIC_PROFILES_DATA[0];
+    const p = PROFILES_DATA[0];
     
-    if (!fans || !p) {
-        if(fans) {
-             fans.innerHTML = '<div class="muted">Tidak ada data profil statis yang dimuat.</div>';
+    if (!Fans || !p) {
+        if(Fans) {
+             Fans.innerHTML = '<div class="muted">Tidak ada data profil statis yang dimuat.</div>';
         }
         return;
     }
@@ -396,7 +396,7 @@ function renderFans() {
         return '';
     }).join('');
 
-fans.innerHTML = `
+Fans.innerHTML = `
         <div class="card p-4" style="background: transparent !important; border: 1px solid rgba(255,255,255,0.08);">
           <div class="row">
               <div class="col-md-3 text-center mb-3 mb-md-0">
@@ -462,3 +462,4 @@ renderProfileCard();
 renderFotos();
 renderVideo();
 renderFans();
+
