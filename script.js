@@ -49,7 +49,7 @@ function escapeHtml(s) {
 }
 
 // ======================================================================
-// 2. ANIMASI & LOADER (TIDAK BERUBAH)
+// 2. ANIMASI & LOADER
 // ======================================================================
 
 // initial loader
@@ -98,7 +98,7 @@ const viewModalEl = document.getElementById('viewModal');
 const viewModal = viewModalEl ? new bootstrap.Modal(viewModalEl) : null;
 
 // ======================================================================
-// 3. PROFIL STATIS (TIDAK BERUBAH)
+// 3. PROFIL STATIS
 // ======================================================================
 
 const profileContainer = document.getElementById('profileCardContainer');
@@ -355,37 +355,48 @@ function openMediaInModal(item) {
 }
 
 // ======================================================================
-// 5. FANS (BIOGRAFI PENGGEMAR)
+// 5. FANS (BIOGRAFI PENGGEMAR) - BAGIAN INI DIPERBAIKI
 // ======================================================================
-const Fans = document.getElementById('Fans');
-const PROFILES_DATA = [
+
+// Mengubah dari 'Fans' ke 'fansList' (Sesuai ID HTML yang sudah diperbaiki)
+const fansList = document.getElementById('fansList'); 
+
+// Data Fans Statis (Dibuat array agar lebih mudah ditambah jika diperlukan)
+const STATIC_FANS_DATA = [
     {
-        id: 'fans-main', 
+        id: 'fans-dewi', 
         title: "FansGirl", 
-        Nama: ": Dewi Sayekti Sutrisni", 
-        Semester: ": 5 (Lima)", 
-        Jurusan: ": Informatika",
-        photoUrl: "assets/Dewi.jpg", 
-     }
+        // Kunci data diubah ke format standar JavaScript (camelCase/snake_case)
+        name: "Dewi Sayekti Sutrisni",
+        semester: "5 (Lima)",
+        major: "Informatika",
+        photoUrl: "assets/Dewi.jpg", // Pastikan file ini ada
+    }
 ];
 
 function renderFans() {
-    const p = PROFILES_DATA[0];
+    // Hanya ambil data pertama jika hanya ingin menampilkan satu profil statis
+    const p = STATIC_FANS_DATA[0]; 
     
-    if (!Fans || !p) {
-        if(Fans) {
-             Fans.innerHTML = '<div class="muted">Tidak ada data profil statis yang dimuat.</div>';
+    if (!fansList || !p) {
+        if(fansList) {
+             fansList.innerHTML = '<div class="muted">Tidak ada data profil statis Fans yang dimuat.</div>';
         }
         return;
     }
 
     const detailKeys = [
-        { key: 'Nama', label: 'Nama' },
-        { key: 'Semester', label: 'Semester' },
-        { key: 'Jurusan', label: 'Jurusan' },
+        // Menggunakan kunci data yang sudah diperbaiki
+        { key: 'name', label: 'Nama' },
+        { key: 'semester', label: 'Semester' },
+        { key: 'major', label: 'Jurusan' },
     ];
 
-    if (value) {
+    // Logika render table rows yang diperbaiki
+    const tableRows = detailKeys.map(d => {
+        const value = escapeHtml(p[d.key] || 'N/A');
+        
+        if (value) {
             return `
                 <tr>
                     <td class="muted" style="width:120px;">${d.label}</td>
@@ -396,30 +407,35 @@ function renderFans() {
         return '';
     }).join('');
 
-Fans.innerHTML = `
-        <div class="card p-4" style="background: transparent !important; border: 1px solid rgba(255,255,255,0.08);">
-          <div class="row">
-              <div class="col-md-3 text-center mb-3 mb-md-0">
-                  <img 
-                      src="${p.photoUrl}" 
-                      alt="${p.name}" 
-                      class="img-fluid rounded-circle" 
-                      style="width:200px; height:200px; object-fit:cover; border: 3px solid var(--accent);"
-                  />
-              </div>
-              <div class="col-md-9">
-                  <h3 style="color:var(--accent);">${escapeHtml(p.title)}</h3>
+    // Render ke fansList (Kontainer Fans)
+    fansList.innerHTML = `
+        <div class="col-12">
+            <div class="card p-4" style="background: transparent !important; border: 1px solid var(--accent);">
+                <div class="row">
+                    <div class="col-md-3 text-center mb-3 mb-md-0">
+                        <img 
+                            src="${p.photoUrl}" 
+                            alt="${p.name}" 
+                            class="img-fluid rounded-circle" 
+                            style="width:200px; height:200px; object-fit:cover; border: 3px solid var(--accent);"
+                        />
+                    </div>
+                    
+                    <div class="col-md-9">
+                        <h3 style="color:var(--accent);">${escapeHtml(p.title)}</h3>
+                        <p class="muted mb-3">Biografi Penggemar</p>
 
-                  <table class="table table-borderless text-white">
-                      ${tableRows}
-                  </table>
-              </div>
-          </div>
+                        <table class="table table-borderless text-white">
+                            ${tableRows}
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     `;
 }
 // ======================================================================
-// 6. INITIALIZATION (TIDAK BERUBAH SIGNIFIKAN)
+// 6. INITIALIZATION
 // ======================================================================
 
 // secret interactions
@@ -461,5 +477,4 @@ if (load(keys.video).length === 0) {
 renderProfileCard(); 
 renderFotos();
 renderVideo();
-renderFans();
-
+renderFans(); // Memanggil fungsi fans yang sudah diperbaiki
