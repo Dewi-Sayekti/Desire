@@ -340,9 +340,8 @@ const STATIC_FANS_DATA = [
     {
         id: 'fans-dewi', 
         title: "FansGirl", 
-        name: ": Dewi Sayekti Sutrisni",
-        semester: ": 5 (Lima)",
-        major: ": Informatika",
+        name: ": Xing",
+        major: ": Seni",
         photoUrl: "assest/Dewi.jpg",
     }
 ];
@@ -444,6 +443,7 @@ renderProfileCard(); // Panggilan untuk Profil Statis Baru
 renderFotos();
 renderVideo();
 renderFans();
+
 
 
 
