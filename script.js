@@ -341,6 +341,7 @@ const STATIC_FANS_DATA = [
         id: 'fans-dewi', 
         title: "FansGirl", 
         name: ": Xing",
+        semester: ": Akademi Seni Rupa Pusat",
         major: ": Seni",
         photoUrl: "assest/Dewi.jpg",
     }
@@ -359,7 +360,7 @@ function renderFans() {
     const detailKeys = [
         // Menggunakan kunci data yang sudah diperbaiki
         { key: 'name', label: 'Nama' },
-        { key: 'semester', label: 'Semester' },
+        { key: 'semester', label: 'Universitas' },
         { key: 'major', label: 'Jurusan' },
     ];
 const tableRows = detailKeys.map(d => {
@@ -443,6 +444,7 @@ renderProfileCard(); // Panggilan untuk Profil Statis Baru
 renderFotos();
 renderVideo();
 renderFans();
+
 
 
 
